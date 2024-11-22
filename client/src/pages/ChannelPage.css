@@ -1,0 +1,94 @@
+.channel-page-container {
+    padding: 20px;
+    background-color: var(--background);
+    color: var(--text);
+  }
+  
+  .header-container h1 {
+    font-size: 2rem;
+  }
+  
+  .header-container h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .theme-toggle-btn,
+  .create-post-btn {
+    margin: 10px 0;
+    padding: 10px 20px;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    cursor: pointer;
+  }
+  
+  .new-post-form {
+    margin-top: 20px;
+  }
+  
+  .new-post-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .new-post-form input,
+  .new-post-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .new-post-form button {
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .new-post-form button:disabled {
+    background-color: gray;
+  }
+  
+  .post-list {
+    margin-top: 20px;
+  }
+  
+  .post-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  
+  .post-item h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .post-item a {
+    color: var(--link);
+  }
+  
+  .post-item p {
+    margin: 5px 0;
+  }
+  
+  /* Define light and dark theme styles */
+  [data-theme="light"] {
+    --background: #fff;
+    --text: #000;
+    --primary: #007bff;
+    --border: #ddd;
+    --link: #007bff;
+  }
+  
+  [data-theme="dark"] {
+    --background: #121212;
+    --text: #fff;
+    --primary: #6200ea;
+    --border: #444;
+    --link: #bb86fc;
+  }
+  

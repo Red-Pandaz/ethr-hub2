@@ -1,0 +1,13 @@
+.comment-list{
+        font-size: 25px;
+        border: 2px solid black;
+        margin: 20px;
+        padding-left: 10px
+}
+.indented-comment{
+    margin-left: 20px
+}
+
+.no-indent{
+    margin-left: 0px
+}

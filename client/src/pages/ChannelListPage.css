@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+[data-theme="dark"] .header-container {
+  background-color: var(--header-bg-dark);
+}
+
+[data-theme="dark"] .channel-card {
+  background-color: var(--card-bg-dark);
+}
+
+[data-theme="dark"] .channel-title {
+  color: var(--link-color-dark);
+}
+
+[data-theme="dark"] .user-info {
+  color: var(--text-color-dark);
+}
+
+/* Header Container */
+.header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--header-bg-dark);
+  border-bottom: 1px solid #ddd;
+}
+
+.header-buttons {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* Channel List Styles */
+.channel-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.channel-card {
+  background-color: var(--card-bg-dark);
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.channel-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.channel-title {
+  margin-bottom: 10px;
+  color: var(--link-color-dark);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.channel-description {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Channel Link */
+.channel-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.channel-link:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .channel-list {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .channel-card {
+    width: 90%;
+    margin-bottom: 15px;
+  }
+}
+
+/* Dark Theme Color Variables */
+:root {
+  --background-color-dark: #121212;
+  --text-color-dark: #f1f1f1;
+  --header-bg-dark: #1e1e1e;
+  --link-color-dark: #4b9fff;
+  --card-bg-dark: #2e2e2e;
+}

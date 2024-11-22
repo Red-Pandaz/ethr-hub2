@@ -1,0 +1,23 @@
+{
+  "name": "ethr-hub",
+  "version": "1.0.0",
+  "description": "A modified version of Reddit with Ethereum authentication",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Millstone",
+  "license": "ISC",
+  "dependencies": {
+    "@google-cloud/secret-manager": "^5.6.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "ethers": "^5.7.2",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.8.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "^5.0.1"
+  }
+}
