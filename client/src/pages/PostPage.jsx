@@ -18,9 +18,9 @@ const PostPage = () => {
     document.body.setAttribute("data-theme", "dark");
 
     axios
-      .get(`http://localhost:5000/api/posts/${postId}`)
+      .get(`https://ethrhub.xyz:5000/api/posts/${postId}`)
       .then((response) => {
-        setData(response.data);
+        setData(response.data);	
         setLoading(false);
       })
       .catch((error) => {

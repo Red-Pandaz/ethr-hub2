@@ -54,7 +54,8 @@ if (process.env.NODE_ENV === "production") {
   }
 } else {
   // In development, fallback to HTTP
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
+  app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
 }

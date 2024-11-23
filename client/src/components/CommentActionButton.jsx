@@ -12,7 +12,7 @@ export default function CommentActionButton({
     e.preventDefault();
     try {
       const response = await apiClient.post(
-        "http://localhost:5000/api/writeComment",
+        "https://ethrhub.xyz/api/writeComment",
         {
           commentText: formContent,
           postId: extraParam.postId,
