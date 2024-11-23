@@ -117,6 +117,12 @@ const ChannelPage = () => {
       <button onClick={() => setIsFormVisible(!isFormVisible)} className="create-post-btn">
         {isFormVisible ? "Cancel" : "Create Post"}
       </button>
+      <button 
+      onClick={() => navigate(`/channels/`)} 
+      className="go-back-btn"
+      >
+        Go Back
+    </button>
 
       {isFormVisible && (
         <form onSubmit={handlePostSubmit} className="new-post-form">
