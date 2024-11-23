@@ -34,12 +34,14 @@ const PostPage = () => {
 
   if (!data) return <p>No data found</p>;
   if (!isConnected) return <p>Please log in to interact with the post.</p>;
+  console.log(data)
 
   return (
+    
     <div style={{marginLeft: "15px"}}>
       <p>You are signed in as {localStorage.getItem("ensName") === "null" ? userAddress : localStorage.getItem("ensName")}</p>
       <button 
-      onClick={() => navigate(`/posts/${data.post.channel}`)} 
+      onClick={() => navigate(`/channels/${data.post.channel}`)} 
       className="go-back-btn"
       >
         Go Back
