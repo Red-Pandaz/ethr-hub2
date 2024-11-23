@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import ButtonDisplay from "../components/ActionButtons";
@@ -11,6 +11,7 @@ const PostPage = () => {
   const { postId } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const { userAddress, authToken, isConnected, loading: contextLoading } = useAuth();
 
   useEffect(() => {
