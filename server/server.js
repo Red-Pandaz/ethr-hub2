@@ -5,11 +5,32 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const https = require("https");
 const fs = require("fs");
+const rateLimit = require("express-rate-limit");
+const helmet = require("helmet");
 
 dotenv.config();
 
 const app = express();
 app.use(cors());
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"], // Default is 'self' to limit sources
+      connectSrc: ["'self'", "https://ethrhub.xyz:5000"], // Allow the backend API domain
+      scriptSrc: ["'self'", "https://trusted-scripts.com"], // Allow trusted scripts (adjust as needed)
+      styleSrc: ["'self'", "https://fonts.googleapis.com"], // Allow trusted styles (adjust as needed)
+      // Add other directives as needed, like imgSrc, fontSrc, etc.
+    },
+  })
+);
+
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+});
+
+app.use(limiter);
 
 // Middleware to parse JSON and URL-encoded bodies
 app.use(express.json());
