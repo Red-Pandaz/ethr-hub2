@@ -17,7 +17,7 @@ const ChannelListPage = () => {
 
   useEffect(() => {
     apiClient
-      .get(`http://localhost:5000/api/channels/`)
+      .get(`/channels/`)
       .then((response) => {
         setData(response.data);
         setLoading(false);

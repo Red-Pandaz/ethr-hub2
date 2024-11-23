@@ -39,7 +39,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
 
             try {
               const doesVoteExist = await apiClient.get(
-                `http://localhost:5000/api/checkExistingVote`,
+                `https://ethrhub.xyz:5000/api/checkExistingVote`,
                 {
                   headers: {
                     Authorization: `Bearer ${authToken}`,
@@ -57,7 +57,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
               let vid = existingVote ? existingVote._id : null;
 
               response = await apiClient.post(
-                "http://localhost:5000/api/toggleVote",
+                "https://ethrhub.xyz:5000/api/toggleVote",
                 {
                   voteId: vid,
                   userId: userAddress.toLowerCase(),
@@ -95,7 +95,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
 
             try {
               const doesVoteExist = await apiClient.get(
-                `http://localhost:5000/api/checkExistingVote`,
+                `https://ethrhub.xyz:5000/api/checkExistingVote`,
                 {
                   headers: {
                     Authorization: `Bearer ${authToken}`,
@@ -112,7 +112,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
 
               let vid = existingVote ? existingVote._id : null;
               response = await apiClient.post(
-                "http://localhost:5000/api/toggleVote",
+                "https://ethrhub.xyz:5000/api/toggleVote",
                 {
                   voteId: vid,
                   userId: userAddress.toLowerCase(),
@@ -136,7 +136,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
         case "upvoteComment":
           {
             const doesVoteExist = await apiClient.get(
-              `http://localhost:5000/api/checkExistingVote?voteType=Comment%20Votes&idType=commentId&uid=${userAddress}&itemId=${extraParam.itemId}`,
+              `https://ethrhub.xyz:5000/api/checkExistingVote?voteType=Comment%20Votes&idType=commentId&uid=${userAddress}&itemId=${extraParam.itemId}`,
               {
                 headers: {
                   Authorization: `Bearer ${authToken}`,
@@ -152,7 +152,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
             }
 
             response = await apiClient.post(
-              "http://localhost:5000/api/toggleVote",
+              "https://ethrhub.xyz:5000/api/toggleVote",
               {
                 voteId: vid,
                 userId: userAddress.toLowerCase(),
@@ -174,7 +174,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
         case "downvoteComment":
           {
             const doesVoteExist = await apiClient.get(
-              `http://localhost:5000/api/checkExistingVote?voteType=Comment%20Votes&idType=commentId&uid=${userAddress}&itemId=${extraParam.itemId}`,
+              `https://ethrhub.xyz:5000/api/checkExistingVote?voteType=Comment%20Votes&idType=commentId&uid=${userAddress}&itemId=${extraParam.itemId}`,
               {
                 headers: {
                   Authorization: `Bearer ${authToken}`,
@@ -190,7 +190,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
             }
 
             const response = await apiClient.post(
-              "http://localhost:5000/api/toggleVote",
+              "https://ethrhub.xyz:5000/api/toggleVote",
               {
                 voteId: vid,
                 userId: userAddress,
@@ -236,7 +236,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
             };
 
             response = await apiClient.post(
-              "http://localhost:5000/api/writeComment",
+              "https://ethhub.xyz:5000/api/writeComment",
               requestData,
               {
                 headers: {
@@ -261,7 +261,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
 
         case "submitPost":
           response = await apiClient.post(
-            "https://localhost:5000/api/writePost",
+            "https://ethrhub.xyz:5000/api/writePost",
             {
               postTitle: extraParam.postTitle,
               postText: extraParam.postText,
@@ -305,7 +305,7 @@ const ButtonDisplay = ({ type, extraParam, onClick }) => {
     const authToken = localStorage.getItem("authToken");
 
     try {
-      const endpoint = "http://localhost:5000/api/writeComment";
+      const endpoint = "https://ethrhub.xyz:5000/api/writeComment";
       const payload = {
         commentText: formContent,
         postId: extraParam.postId,

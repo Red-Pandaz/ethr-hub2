@@ -64,7 +64,7 @@ const CommentList = ({ comments, postId }) => {
     const fetchEnsName = async () => {
       try {
         const response = await apiClient.get(
-          `http://localhost:5000/api/ensname/${userAddress}`
+          `https://ethrhub.xyz:5000/api/ensname/${userAddress}`
         );
         setEnsName(response.data.ensName);
       } catch (error) {
@@ -79,7 +79,7 @@ const CommentList = ({ comments, postId }) => {
       const voteData = {};
       try {
         const response = await apiClient.get(
-          "http://localhost:5000/api/commentvotes"
+          "https://ethrhub.xyz:5000/api/commentvotes"
         );
         const allVotes = response.data;
 
@@ -102,7 +102,7 @@ const CommentList = ({ comments, postId }) => {
   const handleCommentReplySubmit = async (text, parentId, postId, ensName) => {
     try {
       const response = await apiClient.post(
-        "http://localhost:5000/api/writeComment",
+        "https://ethrhub.xyz:5000/api/writeComment",
         {
           commentText: text,
           parentId,
@@ -134,7 +134,7 @@ const CommentList = ({ comments, postId }) => {
   const handleCommentEditSubmit = async (commentId) => {
     try {
       const response = await apiClient.put(
-        `http://localhost:5000/api/editComment/`,
+        `https://ethrhub.xyz:5000/api/editComment/`,
         {
           commentId,
           newCommentText: editedText,
@@ -162,7 +162,7 @@ const CommentList = ({ comments, postId }) => {
   const handleCommentDelete = async (commentId) => {
     try {
       const response = await apiClient.delete(
-        "http://localhost:5000/api/deleteComment",
+        "https://ethrhub.xyz:5000/api/deleteComment",
         {
           data: {
             commentId,
