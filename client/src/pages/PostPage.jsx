@@ -37,6 +37,12 @@ const PostPage = () => {
   return (
     <div style={{marginLeft: "15px"}}>
       <p>You are signed in as {localStorage.getItem("ensName") === "null" ? userAddress : localStorage.getItem("ensName")}</p>
+      <button 
+      onClick={() => navigate(`/posts/${data.post.channel}`)} 
+      className="go-back-btn"
+      >
+        Go Back
+    </button>
       <Post data={data} />
       {data.comments && (
         <CommentList comments={data.comments} postId={postId} />
