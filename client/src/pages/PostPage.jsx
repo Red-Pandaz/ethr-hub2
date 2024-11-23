@@ -34,8 +34,7 @@ const PostPage = () => {
 
   if (!data) return <p>No data found</p>;
   if (!isConnected) return <p>Please log in to interact with the post.</p>;
-  console.log(data)
-
+  console.log(data.post.channel)
   return (
     
     <div style={{marginLeft: "15px"}}>
