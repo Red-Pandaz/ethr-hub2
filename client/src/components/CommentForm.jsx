@@ -8,7 +8,7 @@ const CommentForm = ({ onSubmit, onCancel }) => {
     e.preventDefault();
     if (text.trim()) {
       onSubmit(text);
-      setText(""); // Clear the form after submission
+      setText(""); 
     }
   };
 
