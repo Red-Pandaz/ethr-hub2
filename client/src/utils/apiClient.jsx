@@ -2,7 +2,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const apiClient = axios.create({
-  baseURL: "https://ethrhub.xyz:5000/api",
+  baseURL: import.meta.env.MODE === 'production'
+    ? import.meta.env.VITE_PROD_ENV_ROUTE
+    : import.meta.env.VITE_DEV_ENV_ROUTE,
 });
 
 apiClient.interceptors.response.use(

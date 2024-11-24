@@ -22,11 +22,10 @@ app.use(cors());
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
-      defaultSrc: ["'self'"], // Default is 'self' to limit sources
-      connectSrc: ["'self'", "https://ethrhub.xyz:5000"], // Allow the backend API domain
-      scriptSrc: ["'self'", "https://trusted-scripts.com"], // Allow trusted scripts (adjust as needed)
-      styleSrc: ["'self'", "https://fonts.googleapis.com"], // Allow trusted styles (adjust as needed)
-      // Add other directives as needed, like imgSrc, fontSrc, etc.
+      defaultSrc: ["'self'"], 
+      connectSrc: ["'self'", "https://ethrhub.xyz:5000"], 
+      scriptSrc: ["'self'", "https://trusted-scripts.com"], 
+      styleSrc: ["'self'", "https://fonts.googleapis.com"],
     },
   })
 );
@@ -34,7 +33,7 @@ app.use(
 // rate limiter
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000,
-  max: 100,
+  max: 500,
 });
 
 app.use(limiter);

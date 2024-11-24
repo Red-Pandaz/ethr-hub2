@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { ethers } from "ethers";
 import { useAuth } from "../context/AuthContext";
+import apiClient from '../utils/apiClient'
 
 const Login = () => {
   const { userAddress, isConnected, login, logout } = useAuth();
@@ -43,41 +44,35 @@ const connectWallet = async () => {
   }
 
   try {
-    // Request user accounts from MetaMask
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
     if (accounts && accounts[0]) {
       const userAddress = accounts[0];
-      const message = "Please sign this message to log in"; // Request message
+      const message = "Please sign this message to log in"; 
 
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-
       const signature = await signer.signMessage(message);
 
-      // Send the request to the backend to log in
-      const response = await fetch("https://ethrhub.xyz:5000/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ address: userAddress, signature, message }),
+      const response = await apiClient.post("/login", {
+        address: userAddress,
+        signature,
+        message,
       });
 
-      if (!response.ok) {
+      if (response.status !== 200) {
         console.error("Error logging in, status:", response.status);
-        const errorData = await response.json();
-        console.error("Error details:", errorData.error || "Unknown error");
+        console.error("Error details:", response.data.error || "Unknown error");
         return;
       }
 
-      const data = await response.json();
+      const data = response.data; // No need to await here
 
       if (data.token) {
-        // Store the token and ENS name in local storage
         localStorage.setItem("authToken", data.token);
         localStorage.setItem("ensName", data.ensName);
 
-        // Call the login function with the necessary information
         login(userAddress, data.token, data.ensName);
       } else {
         console.error("Login failed: No token received");
@@ -92,6 +87,7 @@ const connectWallet = async () => {
     }
   }
 };
+
 
 const disconnectWallet = () => {
   logout();
