@@ -26,7 +26,7 @@ const Post = () => {
     const fetchEnsName = async () => {
       try {
         const response = await apiClient.get(
-          `https://ethrhub.xyz:5000/api/ensname/${userAddress}`
+          `/ensname/${userAddress}`
         );
         setEnsName(response.data.ensName);
       } catch (error) {
@@ -40,7 +40,7 @@ const Post = () => {
 
     // Fetch post data
     apiClient
-      .get(`https://ethrhub.xyz:5000/api/posts/${postId}`)
+      .get(`/posts/${postId}`)
       .then((response) => {
         setData(response.data);
         setLoading(false);
@@ -55,7 +55,7 @@ const Post = () => {
   const handleEditSubmit = async () => {
     try {
       const response = await apiClient.put(
-        `https://ethrhub.xyz:5000/api/editPost`,
+        `/editPost`,
         {
           newPostText: editedText,
           userId: userAddress,
@@ -79,7 +79,7 @@ const Post = () => {
 
 const handleDelete = async () => {
     try {
-      await apiClient.delete(`https://ethrhub.xyz:5000/api/deletePost`, {
+      await apiClient.delete(`/deletePost`, {
         data: { userId: userAddress, postId: postId }, 
         headers: {
           Authorization: `Bearer ${authToken}`,
@@ -95,7 +95,7 @@ const handleDelete = async () => {
   const handleReplySubmit = async (text) => {
     try {
       const response = await apiClient.post(
-        "https://ethrhub.xyz:5000/api/writeComment",
+        "/writeComment",
         {
           commentText: text,
           parentId: null,
@@ -112,7 +112,6 @@ const handleDelete = async () => {
 
       const newComment = response.data;
 
-      // Update comments in post data
       setData((prevData) => ({
         ...prevData,
         comments: [...prevData.comments, newComment],

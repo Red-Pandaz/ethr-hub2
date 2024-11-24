@@ -64,7 +64,7 @@ const CommentList = ({ comments, postId }) => {
     const fetchEnsName = async () => {
       try {
         const response = await apiClient.get(
-          `https://ethrhub.xyz:5000/api/ensname/${userAddress}`
+          `/ensname/${userAddress}`
         );
         setEnsName(response.data.ensName);
       } catch (error) {
@@ -79,7 +79,7 @@ const CommentList = ({ comments, postId }) => {
       const voteData = {};
       try {
         const response = await apiClient.get(
-          "https://ethrhub.xyz:5000/api/commentvotes"
+          "/commentvotes"
         );
         const allVotes = response.data;
 
@@ -102,7 +102,7 @@ const CommentList = ({ comments, postId }) => {
   const handleCommentReplySubmit = async (text, parentId, postId, ensName) => {
     try {
       const response = await apiClient.post(
-        "https://ethrhub.xyz:5000/api/writeComment",
+        "/writeComment",
         {
           commentText: text,
           parentId,
@@ -134,7 +134,7 @@ const CommentList = ({ comments, postId }) => {
   const handleCommentEditSubmit = async (commentId) => {
     try {
       const response = await apiClient.put(
-        `https://ethrhub.xyz:5000/api/editComment/`,
+        `/editComment/`,
         {
           commentId,
           newCommentText: editedText,
@@ -162,7 +162,7 @@ const CommentList = ({ comments, postId }) => {
   const handleCommentDelete = async (commentId) => {
     try {
       const response = await apiClient.delete(
-        "https://ethrhub.xyz:5000/api/deleteComment",
+        "/deleteComment",
         {
           data: {
             commentId,
@@ -175,11 +175,11 @@ const CommentList = ({ comments, postId }) => {
         }
       );
 
-      // Remove deleted comment from the state
+      
       const updatedComments = comments.filter(
         (comment) => comment._id !== commentId
       );
-      setIsEditing(null); // Close the edit form if any
+      setIsEditing(null); 
       window.location.reload()
     } catch (error) {
       console.error("Error deleting comment:", error);

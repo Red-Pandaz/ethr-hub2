@@ -43,7 +43,7 @@ const ChannelPage = () => {
           return;
         }
 
-        const response = await apiClient.get(`https://ethrhub.xyz:5000/api/channels/${channelId}`);
+        const response = await apiClient.get(`/channels/${channelId}`);
         if (!response.data.channel || response.data.channel.length === 0) {
           navigate("/error", { replace: true });
           return;
@@ -66,7 +66,7 @@ const ChannelPage = () => {
   useEffect(() => {
     const fetchEnsName = async () => {
       try {
-        const response = await apiClient.get(`https://ethrhub.xyz:5000/api/ensname/${userAddress}`);
+        const response = await apiClient.get(`/ensname/${userAddress}`);
         setEnsName(response.data.ensName);
       } catch (error) {
         console.error("Error fetching ENS name:", error);
@@ -89,7 +89,7 @@ const ChannelPage = () => {
         userId: userAddress,
         channelId,
       };
-      const response = await apiClient.post("https://ethrhub.xyz:5000/api/writePost", newPost, {
+      const response = await apiClient.post("/writePost", newPost, {
         headers: { Authorization: `Bearer ${authToken}` },
       });
       setPostTitle("");

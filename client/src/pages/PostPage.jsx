@@ -6,6 +6,7 @@ import ButtonDisplay from "../components/ActionButtons";
 import CommentForm from "../components/CommentForm";
 import CommentList from "../components/CommentListComponent";
 import Post from "../components/PostComponent";
+import apiClient from '../utils/apiClient'
 
 const PostPage = () => {
   const { postId } = useParams();
@@ -18,8 +19,8 @@ const PostPage = () => {
     // Automatically set the body to dark theme on mount
     document.body.setAttribute("data-theme", "dark");
 
-    axios
-      .get(`https://ethrhub.xyz:5000/api/posts/${postId}`)
+    apiClient
+      .get(`/posts/${postId}`)
       .then((response) => {
         setData(response.data);	
         setLoading(false);
